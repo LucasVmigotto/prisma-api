@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS users;
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL,
+    username VARCHAR(100) NOT NULL,
+    email VARCHAR(191) NOT NULL,
+    create_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    update_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT prisma_api_users_id_key UNIQUE (id),
+    CONSTRAINT prisma_api_users_name_email_pk PRIMARY KEY (username, email)
+);
+
+DROP TABLE IF EXISTS todos;
+CREATE TABLE IF NOT EXISTS todos (
+    id SERIAL,
+    title VARCHAR(100) NOT NULL,
+    description TEXT DEFAULT NULL,
+    create_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    update_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT prisma_api_todo_id_key UNIQUE (id)
+);
